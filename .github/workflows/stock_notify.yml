@@ -2,7 +2,7 @@ name: StockNotify  # ワークフロー名
 
 on:
   schedule:
-    - cron: '*/5 * * * *'  # 5分ごとに自動実行（UTC）
+    - cron: '0 */2 * * *'  # 2時間おきに自動実行（UTC）
   workflow_dispatch:       # 手動実行も可能
 
 jobs:
