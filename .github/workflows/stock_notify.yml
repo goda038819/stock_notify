@@ -1,0 +1,28 @@
+name: StockNotify  # ワークフロー名
+
+on:
+  schedule:
+    - cron: '30 13 * * *'  # 毎日13:30 UTC = 日本時間22:30 に自動実行
+  workflow_dispatch:      # 手動実行も可能
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest  # Ubuntu最新環境で実行
+
+    steps:
+      # 1. リポジトリのコードを取得
+      - uses: actions/checkout@v3
+
+      # 2. Python環境をセットアップ
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      # 3. 必要なライブラリをインストール
+      - name: Install dependencies
+        run: pip install yfinance requests
+
+      # 4. Pythonスクリプトを実行
+      - name: Run script
+        run: python stock_notify.py
