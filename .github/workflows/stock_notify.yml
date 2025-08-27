@@ -2,7 +2,7 @@ name: StockNotify  # ワークフロー名
 
 on:
   schedule:
-    - cron: '30 13 * * *'  # 毎日13:30 UTC = 日本時間22:30 に自動実行
+    - cron: '0 14 * * *'  # 日本時間23:00 = UTC 14:00 に自動実行
   workflow_dispatch:      # 手動実行も可能
 
 jobs:
